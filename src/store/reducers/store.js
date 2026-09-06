@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { productReducer } from "./ProductReducer";
 import { errorReducer } from "./ErrorReducer";
 import { cartReducer } from "./cardReducer";
-import { authReducer } from "./AuthReducer";
+import { authReducer } from "./authReducer";
 import { paymentMethodReducer } from "./paymentMethodReducer";
 import { adminReducer } from "./adminReducer";
 import { orderReducer } from "./orderReducer";

@@ -8,7 +8,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import React from "react";
 import Cart from "./components/cart/Cart";
-import LogIn from "./components/auth/Login";
+import LogIn from "./components/auth/LogIn";
 import PrivateRoute from "./components/PrivateRoute";
 import Register from "./components/auth/Register";
 import Checkout from "./components/checkout/Checkout";
