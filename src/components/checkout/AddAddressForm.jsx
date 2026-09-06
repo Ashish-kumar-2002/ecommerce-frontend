@@ -6,6 +6,7 @@ import { FaAddressBook, FaAddressCard } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { addUpdateUserAddress } from '../../store/actions';
+import Spinners from "../Spinners";
 
 
 const  AddAddressForm=({address,setOpenAddressModel}) =>{
@@ -32,16 +33,6 @@ const  AddAddressForm=({address,setOpenAddressModel}) =>{
      ));
     };
 
-    // useEffect(()=> {
-    //         if(address? addressId){
-    //             setValue("buildingName",address?.buildingName);
-    //             setValue("city",address?.city);
-    //             setValue("street",address?.street); 
-    //             setValue("state",address?.state);
-    //             setValue("pincode",address?.pincode); 
-    //             setValue("country",address?.country); 
-    //         }
-    // },[address])
 
     useEffect(() => {
     if (address?.addressId) {

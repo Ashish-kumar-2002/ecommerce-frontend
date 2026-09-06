@@ -294,7 +294,7 @@ export const getUserAddress = (queryString) => async (dispatch,getState) => {
   } catch (error) {
     console.error(error);
     dispatch({
-      type: "IS _ERROR",
+      type: "IS_ERROR",
       payload: error?.response?.data?.message || "Failed  to fetch user address",
 
     })
