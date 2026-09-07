@@ -88,9 +88,9 @@ const AddressInfo = ({ address }) => {
                 <div className="mt-4">
                   <button
                     onClick={addNewAddressHandler}
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-md"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-md "
                   >
-                    Add More
+                    Add Address
                   </button>
                 </div>
               )}
