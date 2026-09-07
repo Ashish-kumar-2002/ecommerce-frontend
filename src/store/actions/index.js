@@ -626,25 +626,6 @@ export const deleteProduct =
 };
 
 
-// export const addNewProductFormDashboard =
-//   (sendData, toast, reset, setLoader, setOpen,isAdmin) => async (dispatch, getState) => {
-//     try {
-//       setLoader(true);
-//        const endpoint =isAdmin ? "/admin/categories/" : "seller/categories";
-//       await api.post(`${endpoint}${sendData.categoryId}/product`, sendData);
-//       toast.success("Product created successfully");
-//       reset();
-//       setLoader(false);
-//       await dispatch(dashboardProductsAction());
-//     } catch (error) {
-//       console.log(error);
-//       toast.error(error?.response?.data?.description || "Product creation failed");
-//     }finally{
-//       setLoader(false);
-//     }
-//   };
-  
-
 
 export const addNewProductFormDashboard =
   (sendData, toast, reset, setLoader, setOpen, isAdmin) => async (dispatch, getState) => {

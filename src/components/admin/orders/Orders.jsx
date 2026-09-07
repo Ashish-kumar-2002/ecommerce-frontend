@@ -6,42 +6,6 @@ import useOrderFilter from '../../../hooks/useOrderFilter';
 
 const Orders = () => {
 
-  // const adminOrders = [
-  //   {
-  //     "orderId": 60002,
-  //     "email": "admin@example.com",
-  //     "orderItem": null,
-  //     "orderDate": "2026-08-10",
-  //     "payment": {
-  //       "paymentId": 60002,
-  //       "paymentMethod": "online",
-  //       "pgPaymentId": "pi_3U2wZEFtwibHYzII1Ys2YV5j",
-  //       "pgStatus": "succeeded",
-  //       "pgResponseMessage": "Payment successful",
-  //       "pgName": "Stripe"
-  //     },
-  //     "totalAmount": 224.1,
-  //     "orderStatus": "Order Accepted!",
-  //     "addressId": 90001
-  //   },
-  //   {
-  //     "orderId": 60001,
-  //     "email": "TestUser@gmail.com",
-  //     "orderItem": null,
-  //     "orderDate": "2026-08-10",
-  //     "payment": {
-  //       "paymentId": 60001,
-  //       "paymentMethod": "online",
-  //       "pgPaymentId": "pi_3U2wRXFtwibHYzII0ldAlUoZ",
-  //       "pgStatus": "succeeded",
-  //       "pgResponseMessage": "Payment successful",
-  //       "pgName": "Stripe"
-  //     },
-  //     "totalAmount": 703.12,
-  //     "orderStatus": "Order Accepted!",
-  //     "addressId": 90001
-  //   }
-  // ];
 
   // const pagination = { pageNumber: 0, pageSize: 50, totalElements: 6, totalPages: 1, lastPage: true }
 

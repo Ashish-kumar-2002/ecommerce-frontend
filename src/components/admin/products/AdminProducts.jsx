@@ -15,7 +15,6 @@ import ProductViewModel from '../../shared/ProductViewModel';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 
-
 const AdminProducts = () => {
  
   const {products,pagination} = useSelector((state) => state.products);
