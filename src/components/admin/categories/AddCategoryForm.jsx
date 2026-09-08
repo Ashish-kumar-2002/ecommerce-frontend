@@ -33,6 +33,7 @@ const AddCategoryForm = ({ setOpen, open, category, update = false }) => {
       );
     }
   };
+
   useEffect(() => {
     if (update && category) {
       setValue("categoryName", category?.categoryName);
@@ -40,12 +41,12 @@ const AddCategoryForm = ({ setOpen, open, category, update = false }) => {
   }, [update, category]);
 
   return (
-    <div className="py-5 relative h-full ">
+    <div className="py-5 relative h-full">
       <form
-        className="space-y-4 "
+        className="space-y-4"
         onSubmit={handleSubmit(addNewCategoryHandler)}
       >
-        <div className="flex md:flex-row flex-col gap-4 w-full ">
+        <div className="flex md:flex-row flex-col gap-4 w-full">
           <InputField
             label="Category Name"
             required
@@ -58,19 +59,20 @@ const AddCategoryForm = ({ setOpen, open, category, update = false }) => {
           />
         </div>
 
-        <div className="flex  w-full justify-between items-center absolute bottom-14">
+        <div className="flex w-full justify-between items-center mt-8">
           <button
             disabled={open}
             onClick={() => setOpen(false)}
             type="button"
-            className={`border border-borderColor rounded-[5px] font-metropolis  text-textColor py-[10px] px-4 text-sm font-medium`}
+            className="border border-borderColor rounded-[5px] font-metropolis text-textColor py-[10px] px-4 text-sm font-medium"
           >
             Cancel
           </button>
+
           <button
             disabled={open}
             type="submit"
-            className={`font-metropolis rounded-[5px]  bg-custom-blue hover:bg-blue-800 text-white  py-[10px] px-4 text-sm font-medium`}
+            className="font-metropolis rounded-[5px] bg-custom-blue hover:bg-blue-800 text-white py-[10px] px-4 text-sm font-medium"
           >
             {open ? "Loading.." : update ? "Update" : "Save"}
           </button>
