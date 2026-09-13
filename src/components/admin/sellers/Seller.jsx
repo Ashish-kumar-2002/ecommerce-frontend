@@ -14,7 +14,6 @@ const Sellers = () => {
   const { sellers, pagination } = useSelector((state) => state.seller);
   const { isLoading, errorMessage } = useSelector((state) => state.errors);
 
-  // Calling the `useSellerFilter` custom hook to fetch sellers and pagination based on the current URL parameters.
   useSellerFilter();
 
   const emptySellers = !sellers || sellers?.length === 0;

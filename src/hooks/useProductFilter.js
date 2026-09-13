@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { dashboardProductsAction, fetchProducts } from "../store/actions";
-
 export const useProductFilter = () =>{
         const [searchParams] = useSearchParams(); 
         const dispatch = useDispatch();
@@ -22,6 +21,7 @@ export const useProductFilter = () =>{
             const keyword = searchParams.get("keyword") || null;
             params.set("sortBy","price");
             params.set("sortOrder",sortOrder);
+        
 
             if (categoryParams) {
                 params.set("category",categoryParams);
@@ -37,7 +37,6 @@ export const useProductFilter = () =>{
 
         }, [dispatch,searchParams]);
 };
-
 
 
 export const useDashboardProductFilter = () =>{

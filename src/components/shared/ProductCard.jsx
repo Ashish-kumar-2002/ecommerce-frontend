@@ -6,129 +6,137 @@ import truncateText from "../../utils/truncate";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/actions";
 import toast from "react-hot-toast";
+
 const ProductCard = ({
-     productId,
-      productName,
-      image,
-      description,
-      quantity,
-      price,
-      discount,
-      specialPrice,
-      about=false,
-}) =>{
-    const [openProductViewModel, setOpenProductViewModel] = useState(false)
+    productId,
+    productName,
+    image,
+    description,
+    quantity,
+    price,
+    discount,
+    specialPrice,
+    about = false,
+}) => {
+    const [openProductViewModel, setOpenProductViewModel] = useState(false);
     const btnLoader = false;
-    const [seletedViewProduct,setSelectedViewProduct] = useState(null);
+    const [seletedViewProduct, setSelectedViewProduct] = useState(null);
     const isAvailable = quantity && Number(quantity) > 0;
     const dispatch = useDispatch();
 
     const handleProductView = (Product) => {
-        if(!about){
+        if (!about) {
             setSelectedViewProduct(Product);
             setOpenProductViewModel(true);
         }
     };
 
-    const addToCartHandler = (cartItems) =>{
-        dispatch(addToCart(cartItems,1 ,toast))
-    }
-    return (
-        <div className="border-rounded-lg shadow-xl overflow-hidden transition-shadow duration-300">
-            <div onClick={() =>{
-                handleProductView({
-                    id: productId,
-                     productName,
-                     image,
-                     description,
-                     quantity,
-                     price,
-                     discount,
-                     specialPrice,  
-                })
-            }} 
-            className="w-full overflow-hidden aspect-[3/2]">
-              <img className="w-full h-full cursor-pointer transition-transform duration-300 transform hover:scale-105"
-              src={image}
-              alt={productName}>
-              </img>
+    const addToCartHandler = (cartItems) => {
+        dispatch(addToCart(cartItems, 1, toast));
+    };
 
+    return (
+        <div className="rounded-lg shadow-xl overflow-hidden transition-shadow duration-300">
+            <div
+                onClick={() => {
+                    handleProductView({
+                        id: productId,
+                        productName,
+                        image,
+                        description,
+                        quantity,
+                        price,
+                        discount,
+                        specialPrice,
+                    });
+                }}
+                className="w-full overflow-hidden aspect-[3/2]"
+            >
+                <img
+                    className="w-full h-full cursor-pointer transition-transform duration-300 transform hover:scale-105"
+                    src={image}
+                    alt={productName}
+                    loading="eager"
+                />
             </div>
-           <div className="p-4">
-                <h2 onClick={() =>{
-                handleProductView({
-                    id: productId,
-                     productName,
-                     image,
-                     description,
-                     quantity,
-                     price,
-                     discount,
-                     specialPrice,  
-                })
-            }}
-                    className="text-lg font-semibold mb-2 cursor-pointer">
-                    {truncateText(productName,50)}
+
+            <div className="p-4">
+                <h2
+                    onClick={() => {
+                        handleProductView({
+                            id: productId,
+                            productName,
+                            image,
+                            description,
+                            quantity,
+                            price,
+                            discount,
+                            specialPrice,
+                        });
+                    }}
+                    className="text-lg font-semibold mb-2 cursor-pointer"
+                >
+                    {truncateText(productName, 50)}
                 </h2>
 
                 <div className="min-h-20 max-h-20">
-                        <p className="text-gray-600 text-sm">
-                            {truncateText(description,80)}
-                            </p>
+                    <p className="text-gray-600 text-sm">
+                        {truncateText(description, 80)}
+                    </p>
                 </div>
 
-            {!about && (
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-    {specialPrice ? (
-                        <div className="flex flex-col">
-                            <samp className="text-gray-400 line-through text-sm">
+                {!about && (
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                        {specialPrice ? (
+                            <div className="flex flex-col">
+                                <samp className="text-gray-400 line-through text-sm">
+                                    {Number(price).toFixed(2)}
+                                </samp>
+
+                                <samp className="text-lg sm:text-xl font-bold text-slate-700">
+                                    {Number(specialPrice).toFixed(2)}
+                                </samp>
+                            </div>
+                        ) : (
+                            <samp className="text-lg sm:text-xl font-bold text-slate-700">
                                 {Number(price).toFixed(2)}
                             </samp>
+                        )}
 
-                            <samp className="text-lg sm:text-xl font-bold text-slate-700">
-                                {Number(specialPrice).toFixed(2)}
-                            </samp>
-                        </div>
-                    ) : (
-                        <samp className="text-lg sm:text-xl font-bold text-slate-700">
-                            {Number(price).toFixed(2)}
-                        </samp>
-                    )}
+                        <button
+                            disabled={!isAvailable || btnLoader}
+                            onClick={() =>
+                                addToCartHandler({
+                                    image,
+                                    productName,
+                                    description,
+                                    specialPrice,
+                                    price,
+                                    productId,
+                                    quantity,
+                                })
+                            }
+                            className={`bg-blue-500 ${
+                                isAvailable
+                                    ? "opacity-100 hover:bg-blue-600"
+                                    : "opacity-70"
+                            } text-white py-2 px-2 sm:px-3 rounded-lg items-center transition-colors duration-300 w-full sm:w-36 flex justify-center text-sm sm:text-base`}
+                        >
+                            <FaShoppingCart className="mr-1 sm:mr-2" />
+                            {isAvailable ? "Add to Cart" : "Stock Out"}
+                        </button>
+                    </div>
+                )}
+            </div>
 
-                    <button
-                        disabled={!isAvailable || btnLoader}
-                        onClick={() =>
-                            addToCartHandler({
-                                image,
-                                productName,
-                                description,
-                                specialPrice,
-                                price,
-                                productId,
-                                quantity,
-                            })
-                        }
-                        className={`bg-blue-500 ${
-                            isAvailable
-                                ? "opacity-100 hover:bg-blue-600"
-                                : "opacity-70"
-                        } text-white py-2 px-2 sm:px-3 rounded-lg items-center transition-colors duration-300 w-full sm:w-36 flex justify-center text-sm sm:text-base`}
-                    >
-                        <FaShoppingCart className="mr-1 sm:mr-2" />
-                        {isAvailable ? "Add to Cart" : "Stock Out"}
-                    </button>
-                </div>
-
-            )}
-             </div>
-                    <ProductViewModel
+            <ProductViewModel
                 open={openProductViewModel}
                 setOpen={setOpenProductViewModel}
                 product={seletedViewProduct}
                 isAvailable={isAvailable}
-            />          
-         
+            />
         </div>
-    )
-}
+    );
+};
+
 export default ProductCard;
