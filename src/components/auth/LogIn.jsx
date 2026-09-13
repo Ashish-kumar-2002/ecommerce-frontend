@@ -7,8 +7,6 @@ import { useDispatch } from "react-redux";
 import { authenticateSignInUser } from "../../store/actions";
 import toast from "react-hot-toast";
 import Spinners from "../Spinners";
-
-
 const LogIn = () =>{
     const navigate = useNavigate();
     const dispatch = useDispatch();
