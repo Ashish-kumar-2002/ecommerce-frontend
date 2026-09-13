@@ -39,7 +39,7 @@ const Products  = () => {
                 </div>
             ) :(
                     <div className="min-h-[700px]">
-                       <div className="pb-6 pt-14 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-y-6 gap-x-6">
+                    <div className="pb-6 pt-14 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3 sm:gap-6">
                           {products && products.map((item,i) => <ProductCard key={i} {...item}/>
                         )}
                         </div>

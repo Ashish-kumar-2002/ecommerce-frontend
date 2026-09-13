@@ -6,7 +6,6 @@ import truncateText from "../../utils/truncate";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/actions";
 import toast from "react-hot-toast";
-
 const ProductCard = ({
      productId,
       productName,
@@ -34,7 +33,6 @@ const ProductCard = ({
     const addToCartHandler = (cartItems) =>{
         dispatch(addToCart(cartItems,1 ,toast))
     }
-
     return (
         <div className="border-rounded-lg shadow-xl overflow-hidden transition-shadow duration-300">
             <div onClick={() =>{
@@ -80,43 +78,46 @@ const ProductCard = ({
                 </div>
 
             {!about && (
-                 <div className="flex items-center justify-between">
-                {specialPrice ? (
-                     <div className="flex flex-col">
-                    <samp className="text-gray-400 line-through">
-                       {Number(price).toFixed(2)}
-                    </samp>
-                     <samp className="text-xl font-bold text-slate-700">
-                       {Number(specialPrice).toFixed(2)}
-                    </samp>
-                </div>
-                ) : (
-                    <samp className="text-xl font-bold text-slate-700">
-                        {"  "}
-                       {Number(price).toFixed(2)}
-                    </samp>
-                )}
-            <button 
-                    disabled={!isAvailable || btnLoader}
-                    onClick={() => addToCartHandler({
-                        image,
-                        productName,
-                        description,
-                        specialPrice,
-                        price,
-                        productId,
-                        quantity,
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    {specialPrice ? (
+                        <div className="flex flex-col">
+                            <samp className="text-gray-400 line-through text-sm">
+                                {Number(price).toFixed(2)}
+                            </samp>
 
-                    })}
-                  className={`bg-blue-500 ${
-                         isAvailable
-                              ? "opacity-100 hover:bg-blue-600"
-                                    : "opacity-70"
-                            } text-white py-2 px-3 rounded-lg items-center transition-colors duration-300 w-36 flex justify-center`}>
-                                <FaShoppingCart className="mr-2"/>
-                           {isAvailable ? "Add to Cart" : "Stock Out"}
-            </button>
-              </div>
+                            <samp className="text-lg sm:text-xl font-bold text-slate-700">
+                                {Number(specialPrice).toFixed(2)}
+                            </samp>
+                        </div>
+                    ) : (
+                        <samp className="text-lg sm:text-xl font-bold text-slate-700">
+                            {Number(price).toFixed(2)}
+                        </samp>
+                    )}
+
+                    <button
+                        disabled={!isAvailable || btnLoader}
+                        onClick={() =>
+                            addToCartHandler({
+                                image,
+                                productName,
+                                description,
+                                specialPrice,
+                                price,
+                                productId,
+                                quantity,
+                            })
+                        }
+                        className={`bg-blue-500 ${
+                            isAvailable
+                                ? "opacity-100 hover:bg-blue-600"
+                                : "opacity-70"
+                        } text-white py-2 px-2 sm:px-3 rounded-lg items-center transition-colors duration-300 w-full sm:w-36 flex justify-center text-sm sm:text-base`}
+                    >
+                        <FaShoppingCart className="mr-1 sm:mr-2" />
+                        {isAvailable ? "Add to Cart" : "Stock Out"}
+                    </button>
+                </div>
 
             )}
              </div>
