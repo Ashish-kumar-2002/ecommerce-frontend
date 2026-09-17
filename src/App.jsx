@@ -19,6 +19,7 @@ import AdminProducts from "./components/admin/products/AdminProducts";
 import Seller from "./components/admin/sellers/Seller";
 import Category from "./components/admin/categories/Category";
 import Orders from "./components/admin/orders/Orders";
+import ChatBox from "./components/chat/ChatBox";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           </Route>
         </Routes>
       </Router>
+        <ChatBox />
       <Toaster position='bottom-center'/>
     </React.Fragment>
   )
